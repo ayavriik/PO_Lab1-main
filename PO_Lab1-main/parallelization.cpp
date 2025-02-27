@@ -14,7 +14,7 @@ int main() {
         }
     }
 
-    long* rowSums = new long[n](); // Ініціалізація масиву нулями
+    long* rowSums = new long[n]();
     std::thread* threads = new std::thread[numThreads]; 
     int chunkSize = n / numThreads;
 
@@ -31,11 +31,15 @@ int main() {
         });
     }
 
-    // Очікування завершення всіх потоків
     for (int i = 0; i < numThreads; ++i) {
         threads[i].join();
     }
 
-    std::cout << "Threads joined successfully." << std::endl;
+    long long totalSum = 0;
+    for (long i = 0; i < n; ++i) {
+        totalSum += rowSums[i];
+    }
+
+    std::cout << "Total sum calculated: " << totalSum << std::endl;
     return 0;
 }
