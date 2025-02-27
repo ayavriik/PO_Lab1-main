@@ -2,8 +2,8 @@
 #include <thread>
 #include <chrono>
 
-const int n = 1000000;
-const int m = 100;
+const int n = 10000000;
+const int m = 10;
 const int numThreads = 6;
 
 int main() {
