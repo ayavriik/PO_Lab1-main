@@ -4,7 +4,7 @@
 
 const int n = 10000;
 const int m = 10000;
-const int numThreads = 48;
+const int numThreads = 96;
 
 int main() {
     int** matrix = new int*[n];
