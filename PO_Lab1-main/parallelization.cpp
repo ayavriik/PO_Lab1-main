@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+#include <chrono>
 
 const int n = 10000;
 const int m = 10000;
@@ -17,6 +18,8 @@ int main() {
     long* rowSums = new long[n]();
     std::thread* threads = new std::thread[numThreads]; 
     int chunkSize = n / numThreads;
+
+    auto start_time = std::chrono::high_resolution_clock::now();
 
     for (int i = 0; i < numThreads; ++i) {
         int start = i * chunkSize;
@@ -40,6 +43,11 @@ int main() {
         totalSum += rowSums[i];
     }
 
-    std::cout << "Total sum calculated: " << totalSum << std::endl;
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
+
+    std::cout << "Sum of elements in the array: " << totalSum << std::endl;
+    std::cout << "Execution Time: " << duration.count() << " microseconds" << std::endl;
+
     return 0;
 }
