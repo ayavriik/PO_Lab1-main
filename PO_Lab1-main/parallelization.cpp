@@ -2,9 +2,9 @@
 #include <thread>
 #include <chrono>
 
-const int n = 10000;
-const int m = 10000;
-const int numThreads = 96;
+const int n = 100;
+const int m = 1000000;
+const int numThreads = 6;
 
 int main() {
     int** matrix = new int*[n];
